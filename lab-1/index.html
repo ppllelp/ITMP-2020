@@ -6,13 +6,14 @@
 	<link rel=stylesheet href="lab.css">
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+<center>
 <body class="paper">
 	<div id="app">
 		<input type="number" v-model="n">
 		<input type="number" v-model="row">
 		<div class="space"></div>
-		<h2>สูตรคูณแม่ {{n}}</h2>
-		<h5>แม่ก่อนหน้า -> แม่ {{before_n}}</h5>
+		<h2>สูตรคูณแม่ {{n}}</h2><br>
+		<h5>แม่ก่อนหน้า -> แม่ {{before_n}}</h5><br>
 		<h3 class="row"
 		v-for="i in r"
 		>{{n}} x {{i}} = {{x(i)}}</h3>
@@ -68,4 +69,5 @@
 		})
 	</script>
 </body>
+</center>
 </html>
