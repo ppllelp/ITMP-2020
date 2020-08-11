@@ -12,24 +12,34 @@
 		<input type="number" v-model="n">
 		<input type="number" v-model="row">
 		<div class="space"></div>
-		<h2>สูตรคูณแม่ {{n}}</h2><br>
-		<h5>แม่ก่อนหน้า -> แม่ {{before_n}}</h5><br>
-		<h3 class="row"
+		<h3>สูตรคูณแม่ {{n}}</h3><br>
+		<h5>สูตรคูณก่อนหน้า -> แม่ {{before_n}}</h5><br>
+		<h4 class="row"
 		v-for="i in r"
-		>{{n}} x {{i}} = {{x(i)}}</h3>
+		>{{n}} x {{i}} = {{x(i)}}</h4><br>
+		<h3>ผลรวม (sum) = {{sum(row)}}</h3>
 	</div>
 
+
 	<script>
+		let ans = 0
 		let app = new Vue({
-			el: '#app',
-			data: {
-				n: 2,
+			el:'#app',
+			data:{
+				n:2,
 				before_n:1,
 				row:12
 			},
 			methods: {
 				x: function(row){
 					return this.n*row
+				},
+				sum: function(row){
+					ans = 0
+					for (var i = 1; i <= row; i++) {
+						ans += (this.n * i)
+					}
+					return ans
 				}
 			},
 			computed: {
@@ -40,7 +50,7 @@
 					return this.n*2
 				},
 				x3: function(){
-					return this.n*3
+					return this.n*3	
 				},
 				x4: function(){
 					return this.n*4
@@ -59,6 +69,15 @@
 				},
 				x9: function(){
 					return this.n*9
+				},
+				x10: function(){
+					return this.n*10
+				},
+				x11: function(){
+					return this.n*11
+				},
+				x12: function(){
+					return this.n*12
 				}
 			},
 			watch: {
@@ -66,8 +85,7 @@
 					this.before_n = b
 				}
 			}
-		})
+		});
 	</script>
 </body>
-</center>
 </html>
