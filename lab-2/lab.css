@@ -1,0 +1,18 @@
+
+     body {
+            font-family: 'Kanit', sans-serif;
+            font-size: 18px;
+            background-image: url(https://codetheweb.blog/assets/img/posts/css-advanced-background-images/cover.jpg);  
+            background-size: cover;     
+        }
+
+        button {
+            width: 220px;
+            height: 65px;
+            font-size: 18px;
+            background: #641e47;
+            color: rgb(250, 249, 252);
+            border: #53caee 10px;
+            border-radius: 22px;
+            opacity: 0.75;
+        }

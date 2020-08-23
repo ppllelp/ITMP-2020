@@ -4,24 +4,27 @@
 	<title>The Members - ITKMITL Multimedia Programming 2563</title>
 
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	 <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="lab.css">
 </head>
 <body>
+	<center>
 	<div id="app">
-		About<br>
+		<h1>Covid-19</h1>
+		<h1> About<br></h1>
 		<h3>State : {{person.state}}</h3>
 		<h3>cases : {{person.cases}}</h3>
 		<h3>todayCases : {{person.todayCases}}</h3>
 		<h3>deaths : {{person.deaths}}</h3>
 		<h3>todayDeaths : {{person.todayDeaths}}</h3>
-		<h3>population : {{person.population}}</h3>
-		<button @click="isthisyes">เขาไปต่างประเทศมาหรือไม่</button>
+		<h3>population : {{person.population}}</h3><br>
+		<button @click="isthisyes">คาดว่าพรุ่งนี้ยอดคนติดเชื้อจะลดลงไหม</button>
 		<h2>{{yesno.answer}}</h2>
 		<img :src="yesno.image"><br>
 
 
 
-		State
+		<h1>State</h1>
 		<h2 v-for="u in state" :data-state="u.state" @click="viewBio(u)">
 			<img :src="`https://picsum.photos/seed/picsum/200/300`" alt="">
 		{{u.state}}</h2>
@@ -90,5 +93,6 @@
 		//}
 
 	</script>
+	</center>
 </body>
 </html>
