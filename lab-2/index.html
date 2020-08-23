@@ -9,13 +9,15 @@
 <body>
 	<div id="app">
 		About<br>
-		<h3>State {{person.state}}</h3>
-		<h3>cases {{person.cases}}</h3>
-		<h3>todayCases {{person.todayCases}}</h3>
-		<h3>deaths {{person.deaths}}</h3>
+		<h3>State : {{person.state}}</h3>
+		<h3>cases : {{person.cases}}</h3>
+		<h3>todayCases : {{person.todayCases}}</h3>
+		<h3>deaths : {{person.deaths}}</h3>
+		<h3>todayDeaths : {{person.todayDeaths}}</h3>
+		<h3>population : {{person.population}}</h3>
 
-		Amount 
-		<h2 v-for="u in amount">{{u.state}}</h2>
+		State
+		<h2 v-for="u in state" @click="viewBio(u)">{{u.state}}</h2>
 	</div>
 	
 
@@ -23,7 +25,7 @@
 		fetch('https://corona.lmao.ninja/v2/states')
 		.then(response => response.json())
 		.then(json => {console.log(json)
-			app.amount = json
+			app.state = json
 			app.person = json[0]
 		})
 
@@ -31,6 +33,11 @@
 
 		let app = new Vue({
 			el: '#app',
+			methods: {
+				viewBio: function(state){
+					this.person = state
+				}
+			},
 			data: {
 				person :{
 					"state":"California",
@@ -41,7 +48,7 @@
 					"todayDeaths":"__________",
 					"population":"__________"},
 
-				amount :[
+				state :[
 				{
 					"state":"California",
 					"updated":"__________",
@@ -54,6 +61,10 @@
 				
 			}
 		})
+
+		//function viewBio(h2){
+		//	console.log(h2)
+		//}
 
 	</script>
 </body>
