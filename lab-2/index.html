@@ -15,9 +15,16 @@
 		<h3>deaths : {{person.deaths}}</h3>
 		<h3>todayDeaths : {{person.todayDeaths}}</h3>
 		<h3>population : {{person.population}}</h3>
+		<button @click="isthisyes">เขาไปต่างประเทศมาหรือไม่</button>
+		<h2>{{yesno.answer}}</h2>
+		<img :src="yesno.image"><br>
+
+
 
 		State
-		<h2 v-for="u in state" @click="viewBio(u)">{{u.state}}</h2>
+		<h2 v-for="u in state" :data-state="u.state" @click="viewBio(u)">
+			<img :src="`https://picsum.photos/seed/picsum/200/300`" alt="">
+		{{u.state}}</h2>
 	</div>
 	
 
@@ -36,9 +43,25 @@
 			methods: {
 				viewBio: function(state){
 					this.person = state
+					this.yesno = {
+							"answer":"อยากรู้คลิก",
+							"forced":false,
+							"image":""
+					}
+				},
+				isthisyes: function(){
+					fetch('https://yesno.wtf/api')
+					.then(response => response.json())
+					.then(json => {console.log(json)
+						app.yesno = json
+					})
 				}
 			},
 			data: {
+				yesno:{
+					"answer":"อยากรู้คลิก",
+					"forced":false,
+					"image":""},
 				person :{
 					"state":"California",
 					"updated":"__________",
