@@ -8,28 +8,50 @@
 </head>
 <body>
 	<div id="app">
-		
+		About<br>
+		<h3>State {{person.state}}</h3>
+		<h3>cases {{person.cases}}</h3>
+		<h3>todayCases {{person.todayCases}}</h3>
+		<h3>deaths {{person.deaths}}</h3>
+
+		Amount 
+		<h2 v-for="u in amount">{{u.state}}</h2>
 	</div>
 	
 
 	<script>
-		fetch('https://jsonplaceholder.typicode.com/users')
+		fetch('https://corona.lmao.ninja/v2/states')
 		.then(response => response.json())
-		.then(json => {console.log(json)})
+		.then(json => {console.log(json)
+			app.amount = json
+			app.person = json[0]
+		})
+
+
+
 		let app = new Vue({
 			el: '#app',
 			data: {
-				users :[],
-				person:{
-					id:0,
-					name:'..loading',
-					username:'..loading',
-					email:'..loading',
-					website:'..loading',
-					company:{
-						name : '..loading',
-					}
-				}	
+				person :{
+					"state":"California",
+					"updated":"__________",
+					"cases":"__________",
+					"todayCases":"__________",
+					"deaths":"__________",
+					"todayDeaths":"__________",
+					"population":"__________"},
+
+				amount :[
+				{
+					"state":"California",
+					"updated":"__________",
+					"cases":"__________",
+					"todayCases":"__________",
+					"deaths":"__________",
+					"todayDeaths":"__________",
+					"population":"__________"}
+				],
+				
 			}
 		})
 
