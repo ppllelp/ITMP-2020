@@ -22,6 +22,7 @@
 				'--l':l+'%',
 			}"
 				:data-pick="i == pick"
+				@click="check(i == pick)"
 				></a-dot>
 			</main>
 		</section>
@@ -52,7 +53,20 @@
 				l:40,//ความสว่างของสีทั่วไปในรอบนี้
 			},
 			methods: {
-
+				check: function(e){
+					console.log(e)
+					if (e==true){
+						app.correct()
+					}
+				},
+				correct:function(){
+					this.row = rand(2,6)
+					this.pick= rand(1,this.row*this.row)
+					this.h= rand(50,250)
+					this.l= rand(40,80)
+					app.score+=10
+					console.log('COrrect')
+				}
 			}
 		})
 		//ทำให้แคนวาสมี --picklight ตามที่กำหนดไว้ข้างบนนี้
