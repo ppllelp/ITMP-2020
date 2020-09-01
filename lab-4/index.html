@@ -35,7 +35,7 @@
 
 	<script>
 		let picklight = "20%" //เลือกว่ารอบนี้ อันพิเศษจะมีความสว่าง 20%
-		document.registerElement('a-dot') //ให้ vue รู้จัก a-dot
+		//document.registerElement('a-dot') //ให้ vue รู้จัก a-dot
 
 		function rand(start,stop){//สร้างฟังก์ชัน random ไว้ใช้
 			let shift = (stop-start)+1
@@ -55,17 +55,28 @@
 			methods: {
 				check: function(e){
 					console.log(e)
-					if (e==true){
+					if (this.time > 0){
+						if (e==true){
 						app.correct()
+					}else{
+						app.incorrect()
+					}
+
+					}else{
+						console.log('Game Over')
 					}
 				},
+
 				correct:function(){
 					this.row = rand(2,6)
 					this.pick= rand(1,this.row*this.row)
 					this.h= rand(50,250)
 					this.l= rand(40,80)
-					app.score+=10
+					app.score+=1
 					console.log('COrrect')
+				},
+				incorrect:function(){
+					app.score-=1
 				}
 			}
 		})
