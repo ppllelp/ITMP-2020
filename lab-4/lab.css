@@ -1,0 +1,54 @@
+body{
+	min-height: 100vh;
+	display: flex;
+	background: black;
+}
+#canvas{
+	margin: auto;
+	width: 400px;
+	height: 500px;
+	background-color: grey;
+}
+#canvas_header,
+#canvas_footer{
+	background-color: black;
+	height: 50px;
+	color: white;
+	font-weight: bold;
+}
+#canvas_main{
+	background-color: black;
+	height: 400px;
+}
+#canvas_header,
+#canvas_main,
+#canvas_footer{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+main{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+}
+a-dot{
+	--row:3;
+	--h:330;
+	--l:50%;
+	--size: calc((100% / var(--row)) - 2%);
+	width: var(--size);
+	height: var(--size);
+	margin:1%;
+	background-color: hsl(var(--h),100%,var(--l));
+	display: inline-block;
+	border-radius: 100%;
+	cursor: pointer;
+}
+
+a-dot[data-pick="true"]{
+	background-color: hsl(var(--h),100%,var(--picklight));
+}
