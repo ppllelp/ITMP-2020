@@ -1,0 +1,167 @@
+:root{
+	--boxsize:20%;
+}
+body{
+	min-height: 100vh;
+	display: flex;
+	background:black;
+}
+#canvas{
+	margin: auto;
+	width: 400px;
+	height: 500px;
+	box-shadow: 0px 0px 5px #fff9,0px 0px 40px #fff4;
+	border-radius: 12px;
+	overflow: hidden;
+}
+#canvas_header,
+#canvas_footer{
+	background-color: brown;
+	background-image: url('tile-grass.jpg');
+	background-size: 20%;
+	height: 50px;
+	color: white;
+	font-weight: bold;
+}
+#canvas_main{
+	background-color: grey;
+	background-image: url('tile-rock.jpg');
+	background-size: 20%;
+	height: 400px;
+	opacity: .2;
+}
+#canvas_main[data-play="true"]{
+	opacity: 1;
+}
+#canvas_header,
+#canvas_footer{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+main{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+div.box{
+	width: var(--boxsize);
+	height: var(--boxsize);
+	background-color: orange;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	transition: all .2s;
+}
+.btn{
+	width: 100%;
+	height: 100%;
+	background-color: #0008;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+#endgame{
+	background-color: #333;
+}
+.box._toggle{
+	background-color: yellow;
+	transition: none;
+	opacity: .5;
+}
+.box._toggle[data-isrightarrow="0"]{
+	background-color: red;
+}
+
+
+.box._12{
+	background-color: red;
+}
+.box._16{
+	background-color: yellow;
+}
+.box._path{
+	background-color: black;
+	background-image: url('tile-wood.jpg');
+	background-size: cover;
+	transform: rotate(0deg);
+}
+.box._path[data-pst="4"],
+.box._path[data-pst="5"],
+.box._path[data-pst="7"],
+.box._path[data-pst="9"],
+.box._path[data-pst="11"]{
+	transform: rotate(90deg);
+}
+.box._fruit{
+	background-color: yellow;
+	border-radius: 100%;
+	border: 3px solid #fffc;
+	transform: scale(.6);
+}
+.box._fruit[data-type="11"]{
+	background-color: red;
+}
+
+.box[data-pst="0"]{
+	right:0%;
+	bottom:0%;
+}
+.box[data-pst="1"]{
+	right:20%;
+	bottom:0%;
+}
+.box[data-pst="2"]{
+	right:40%;
+	bottom:0%;
+}
+.box[data-pst="3"]{
+	right:60%;
+	bottom:0%;
+}
+.box[data-pst="4"]{
+	right:80%;
+	bottom:0%;
+}
+.box[data-pst="5"]{
+	right:80%;
+	bottom:20%;
+}
+.box[data-pst="6"]{
+	right:80%;
+	bottom:40%;
+}
+.box[data-pst="7"]{
+	right:60%;
+	bottom:40%;
+}
+.box[data-pst="8"]{
+	right:60%;
+	bottom:20%;
+}
+.box[data-pst="9"]{
+	right:40%;
+	bottom:20%;
+}
+.box[data-pst="10"]{
+	right:40%;
+	bottom:40%;
+}
+.box[data-pst="11"]{
+	right:40%;
+	bottom:60%;
+}
+.box[data-pst="12"]{
+	right:40%;
+	bottom:80%;
+}
+.box[data-pst="13"]{
+	right:20%;
+	bottom:40%;
+}
+.box[data-pst="16"]{
+	right:0%;
+	bottom:40%;
+}

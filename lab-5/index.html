@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab - Multimedia Programming 2563 ITKMITL</title>
+	<link rel="stylesheet" type="text/css" href="../src/reset.css">
+	<link rel="stylesheet" type="text/css" href="lab.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="canvas">
+		<section id="canvas_header">
+			<div>
+				-- แสดงคะแนน
+			</div>
+		</section>
+		<section id="canvas_main" 
+		:data-play="play">
+			<main>
+				<div class="box _path" 
+				v-for="i in 14" 
+				:data-pst="i"></div>
+				<div class="box _toggle" data-pst="10" data-isrightarrow="1"></div>
+
+				<div class="box _fruit"></div>
+
+				<div class="box _origin"></div>
+				<div class="box _12" data-pst="12"></div>
+				<div class="box _16" data-pst="16"></div>
+				
+			</main>
+		</section>
+		<section id="canvas_footer">
+			<div v-if="play" class="btn" id="toggle">
+				Toggle
+			</div>
+			<div v-if="!play" class="btn" id="endgame">
+				Ene Game
+			</div>
+		</section>
+	</div>
+
+	<script>
+		function rand(start,stop){
+			let shift = (stop-start)+1
+			return Math.floor(Math.random()*100%shift)+start
+		}
+		
+		let fruitCount = 5
+		let isRightArrow = 1
+		let speed = 1000
+		let app = new Vue({
+			el:'#canvas',
+			data:{
+				play:true,
+				time:0,
+				score:0,
+				fruits:[
+					{id:1,type:13,pst:6,run:true,step:1},
+					{id:2,type:11,pst:3,run:true,step:1},
+					{id:3,type:11,pst:2,run:true,step:1},
+					{id:4,type:13,pst:1,run:true,step:1},
+				]
+			}
+		})
+	</script>
+</body>
+</html>
