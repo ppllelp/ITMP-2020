@@ -28,11 +28,11 @@
 			</main>
 		</section>
 		<section id="canvas_footer">
-			<div v-if="play" class="btn" id="toggle"  @click = "click()">
+			<div v-if="play" class="btn" id="toggle" @click="change">
 				Toggle
 			</div> 
-			<div v-if="!play" class="btn" id="endgame">
-				Ene Game
+			<div v-if="!play" class="btn" id="endgame" @click="re">
+				Restart
 			</div>
 		</section>
 	</div>
@@ -56,44 +56,86 @@
 				turn:0,
 				score:0,
 				fruits:[
-					{id:1,type:'red',pst:6,run:true,step:1},
-					{id:2,type:'yellow',pst:3,run:true,step:1},
-					{id:3,type:'red',pst:1,run:true,step:1},
-					{id:4,type:'yellow',pst:2,run:true,step:1},
-					{id:5,type:'red',pst:5,run:true,step:1},
-					{id:6,type:'yellow',pst:4,run:true,step:1},
+					{id:1,type:16,pst:6,run:true,step:1}, //16 is yellow
+					{id:2,type:11,pst:3,run:true,step:1}, 
 				]
 			},
-			method:{
-				click: function(){
-					if(this.isRightArrow == "1"){
-						this.isRightArrow = "0";
-						console.log("red")
+			methods:{
+				change: function(){
+					if(this.isRightArrow == 1){
+						this.isRightArrow = 0
+					}else{
+						this.isRightArrow = 1
 					}
-					else if(this.isRightArrow == "0"){
-						this.isRightArrow = "1";
-						console.log("yellow")
-					}
+					console.log(this.isRightArrow)
+				},
+
+				re(){
+					location.reload();
 				}
+
 			},
 			computed:{},
+
+
 			watch:{
-				turn: function(x){
-					let count = this.fruits.length
+				turn: function(){
 					for(let f in this.fruits){
-						let run = this.fruits[f].run
-						if (run){
-							this.fruits[f].pst = this.fruits[f].pst+1
+
+						if (this.fruits[f].pst == 10){
+							if(this.isRightArrow == 1){
+								this.fruits[f].step = 3 
+							}else{
+								this.fruits[f].step = 1
+							}
 						}
-						console.log()
+
+
+
+						if (this.fruits[f].pst == 11 || this.fruits[f].pst == 16) {
+
+							if (this.fruits[f].pst == this.fruits[f].type && this.fruits[f].run) {
+								this.score ++
+							}
+
+							else if (this.fruits[f].pst != this.fruits[f].type && this.fruits[f].run) {
+								this.play = false 
+							}
+						}
+
+						if (this.fruits[f].pst == 12 || this.fruits[f].pst == 16) {
+							this.fruits[f].run = false
+						}
+
+
+						let run = this.fruits[f].run
+						if (run) {
+							this.fruits[f].pst = this.fruits[f].pst + this.fruits[f].step 
+						}
+
+					}
+
+					let spawn = rand(0,1)
+					if(spawn == 1){
+						newfruit = rand(0,1)
+						newfruitId = 3
+						if(newfruit == 1){
+							this.fruits.push({id:newfruitId,type:11,pst:1,run:true,step:1})
+						}else{
+							this.fruits.push({id:newfruitId,type:16,pst:1,run:true,step:1})
+						}
+						newfruitId++;
 					}
 				}
 			}
 		})
 
-		let playing = setInterval(function(){
-			app.turn++
-		},speed)
+		setTimeout(function timespeed(){
+			if (app.play) {
+				app.turn++
+				setTimeout(timespeed, app.speed)
+			}
+		},app.speed)
 	</script>
 </body>
 </html>
