@@ -21,9 +21,7 @@
 				:data-pst="i"></div>
 				<div class="box _toggle" data-pst="10" data-isrightarrow="1"></div>
 
-				<div class="box _fruit" v-for="f in fruits "
-				:data-pst="f.pst"
-				></div>
+				<div class="box _fruit" v-for="f in fruits ":data-pst="f.pst"></div>
 
 				<div class="box _origin"></div>
 				<div class="box _12" data-pst="12"></div>
@@ -47,7 +45,8 @@
 			return Math.floor(Math.random()*100%shift)+start
 		}
 		
-		let fruitCount = 3
+		let fruitCount = 5
+		let nextFruitId = 3
 		let isRightArrow = 1
 		let speed = 1000
 		let app = new Vue({
@@ -57,13 +56,14 @@
 				speed: speed,
 				play:true,
 				time:0,
+				turn:0,
 				score:0,
 				fruits:[
 					{id:1,type:'red',pst:6,run:true,step:1},
 					{id:2,type:'yellow',pst:3,run:true,step:1},
 				]
 			},
-			methods:{},
+			method:{},
 			computed:{},
 			watch:{
 				turn: function(x){
