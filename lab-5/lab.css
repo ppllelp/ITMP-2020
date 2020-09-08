@@ -4,7 +4,7 @@
 body{
 	min-height: 100vh;
 	display: flex;
-	background:black;
+	background:black; 
 }
 #canvas{
 	margin: auto;
@@ -101,7 +101,7 @@ div.box{
 	border: 3px solid #fffc;
 	transform: scale(.6);
 }
-.box._fruit[data-type="11"]{
+.box._fruit[data-type="red"]{
 	background-color: red;
 }
 
