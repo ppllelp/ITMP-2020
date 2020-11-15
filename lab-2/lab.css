@@ -4,6 +4,9 @@
             font-size: 18px;
             background-image: url(https://codetheweb.blog/assets/img/posts/css-advanced-background-images/cover.jpg);  
             background-size: cover;     
+            margin: 0;
+             margin-left: auto;
+            margin-right: auto;
         }
 
         button {

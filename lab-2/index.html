@@ -11,14 +11,14 @@
 	<center>
 	<div id="app">
 		<h1>Covid-19</h1>
-		<h1> About<br></h1>
+		<h2> About<br></h2>
 		<h3>State : {{person.state}}</h3>
 		<h3>cases : {{person.cases}}</h3>
 		<h3>todayCases : {{person.todayCases}}</h3>
 		<h3>deaths : {{person.deaths}}</h3>
 		<h3>todayDeaths : {{person.todayDeaths}}</h3>
 		<h3>population : {{person.population}}</h3><br>
-		<button @click="isthisyes">คาดว่าพรุ่งนี้ยอดคนติดเชื้อจะลดลงไหม</button>
+		<button @click="isthisyes">คิดว่าพรุ่งนี้ยอดคนติดเชื้อโควิดจะลดลงไหม?</button>
 		<h2>{{yesno.answer}}</h2>
 		<img :src="yesno.image"><br>
 
@@ -62,7 +62,7 @@
 			},
 			data: {
 				yesno:{
-					"answer":"อยากรู้คลิก",
+					"answer":"อยากรู้ลองคลิกดูสิ",
 					"forced":false,
 					"image":""},
 				person :{
